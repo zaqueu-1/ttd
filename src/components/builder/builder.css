@@ -102,20 +102,34 @@
     border: 2px solid transparent;
     border-radius: 12px;
     background-color: rgb(58, 134, 58);
+    transition: all 0.3s;
   }
 
   .selected {
     border: 2px solid white;
   }
 
-  .exercise-name, .sets-number {
+  .finished {
+    background-color: rgb(93, 99, 93);
+  }
+
+  .stats {
+    display: flex;
+  }
+
+  .exercise-name, .sets-number, .weights-number {
     color: white;
     font-size: 1.5rem;
     padding: .5rem;
   }
 
   .sets-number {
-    background-color: rgb(73, 167, 73, 0.5);
+    transition: all 0.3s;
+  }
+
+  .weights-number {
+    margin-left: .5rem;
+    transition: all 0.3s;
   }
 
   .edit-btn, .delete-btn {
@@ -133,4 +147,47 @@
   .edit-btn:hover, .delete-btn:hover {
     transform: scale(1.2);
     opacity: 0.8;
+  }
+
+  .save-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .save-input {
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid transparent;
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    height: 15px;
+    transition: all 0.3s;
+    color: #585858;
+  }
+
+  .save-input:focus {
+    border-radius: 8px;
+    border: 2px solid rgb(112, 112, 112);
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    height: 15px;
+    transition: all 0.3s;
+    color: #585858;
+  }
+
+  .save-btn {
+    margin-left: .2rem;
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    display: flex;
+    color: rgb(112, 112, 112);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .save-btn:hover {
+    color: rgb(58, 134, 58);
   }

@@ -9,6 +9,7 @@ function Builder() {
     const [exercise, setExercise] = useState('')
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
+    const [weights, setWeights] = useState('')
     const [exercises, setExercises] = useState(() => {
         const storedExercises = localStorage.getItem("exercises");
         return storedExercises ? JSON.parse(storedExercises) : [];
@@ -21,7 +22,9 @@ function Builder() {
             exerciseName: exercise,
             setsNum: sets,
             repsNum: reps,
+            weightsNum: weights, 
             id: Date.now(),
+            finished: finished,
         }
     
         if (!exercise || !sets || !reps) {
@@ -29,8 +32,10 @@ function Builder() {
             return;
         }
 
+        toast.success('Exercício adicionado!')
         setExercises([...exercises, newExercise])
         localStorage.setItem("exercises", JSON.stringify([...exercises, newExercise]));
+        setExercise('')
     }
 
     const [selectedExercise, setSelectedExercise] = useState({});
@@ -46,7 +51,7 @@ function Builder() {
     const updateExercise = (e) => {
         e.preventDefault();
 
-        const exerciseToEdit = { exerciseName: exercise, setsNum: sets, repsNum: reps };
+        const exerciseToEdit = { exerciseName: exercise, setsNum: sets, repsNum: reps, weightsNum: weights};
         const newExercises = [...exercises];
         
         newExercises[exercises.indexOf(selectedExercise)] = exerciseToEdit;
@@ -61,6 +66,37 @@ function Builder() {
         setExercises(updatedExercises)
 
         localStorage.setItem("exercises", JSON.stringify(updatedExercises))
+        toast.error('Exercício deletado!')
+    }
+
+    const [finished, setFinished] = useState(false)
+
+    const finishedToggle = (e, id) => {
+        const newExercises = [...exercises];
+        const exerciseToEdit = newExercises.find((ex) => ex.id === id);
+        exerciseToEdit.finished = e.target.checked;
+
+        localStorage.setItem('exercises', JSON.stringify(newExercises));
+        setExercises(newExercises);
+    }
+
+    const [listName, setListName] = useState('')
+
+    const [listArray, setListArray] = useState([])
+
+    const handleSave = (e) => {
+        e.preventDefault()
+
+        let newList = {
+            name: listName,
+            exercises: exercises,
+            id: Date.now(),
+        }
+
+        listArray.push(newList)
+        console.log(listArray)
+        toast.success('Treino salvo com sucesso!')
+        localStorage.setItem("listArray", JSON.stringify(listArray));
     }
       
   return (
@@ -86,6 +122,12 @@ function Builder() {
                             min='1'
                             value={reps}
                             onChange={(e) => setReps(e.target.value)} />
+                    <input className='reps-input' 
+                            type="number"
+                            placeholder='carga'
+                            min='1'
+                            value={weights}
+                            onChange={(e) => setWeights(e.target.value)} />
                     <button className='update-btn' type="submit">Atualizar</button>
                     <button className='cancel-btn' onClick={() => showEditForm(false)}>Cancelar</button>
                 </div>
@@ -115,24 +157,47 @@ function Builder() {
                             name='reps'
                             value={reps} 
                             onChange={(e) => setReps(e.target.value)} />
+                    <input className='reps-input' 
+                            type='number' 
+                            placeholder='carga'
+                            min='1'
+                            name='weights'
+                            value={weights} 
+                            onChange={(e) => setWeights(e.target.value)} />
                     <button className='submit-btn' type="submit" ><MdAddBox /></button>
                 </div>
             </form>
         </div>)}
 
         <div className="preview-container">
-                {exercises.map((ex) => (
+                {exercises && (exercises.map((ex) => (
                 <div className='exercise-list' key={ex.id}>
-                    <div className={showEditForm ? 'exercise selected' : 'exercise'} >
+                    <div className={showEditForm ? 'exercise selected' :
+                                    ex.finished ? 'exercise finished' :
+                                    'exercise'} >
+                        <input  style={{width: '22px'}} onChange={(e) => finishedToggle(e, ex.id)} checked={ex.finished} type='checkbox'></input>
                         <p className="exercise-name">{ex.exerciseName}</p>
-                        <p className="sets-number">{ex.setsNum} x {ex.repsNum}</p>
+                        <div className="stats">
+                            <p style={ex.finished ? { backgroundColor: '#818f8950'} : {backgroundColor: '#84a78480'}} className='sets-number'>{ex.setsNum} x {ex.repsNum}</p>
+                            <p style={ex.finished ? { backgroundColor: '#818f8950'} : {backgroundColor: '#e7656580'}} className='weights-number'>{ex.weightsNum}kg</p>
+                        </div>
                     </div>
                     <div className="controls">
                         <button className="delete-btn" onClick={() => deleteExercise(ex.id)}><MdDelete /></button>
                         <button className="edit-btn" onClick={(e) => editExercise(e, ex.id)}><MdEdit /></button>
                     </div>
                 </div>
-                ))}
+                )))}
+
+        <div className="save-container">
+            <input className='save-input' 
+                    type='text' 
+                    placeholder='Nome da Ficha'
+                    name='list'
+                    value={listName} 
+                    onChange={(e) => setListName(e.target.value)} />
+            <button className="save-btn" onClick={handleSave} type='submit'><MdAddBox /></button>
+        </div>
         </div>
     </div>
   )
