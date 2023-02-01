@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Supino Reto"
+    },
+    {
+        "id": 2,
+        "name": "Supino Inclinado"
+    },
+    {
+        "id": 3,
+        "name": "Supino Declinado"
+    },
+    {
+        "id": 4,
+        "name": "Crucifixo c/ Halteres"
+    },
+    {
+        "id": 5,
+        "name": "Fly/Voador"
+    },
+    {
+        "id": 6,
+        "name": "Crucifixo Invertido"
+    },
+    {
+        "id": 7,
+        "name": "Crossover na Polia Alta"
+    },
+    {
+        "id": 8,
+        "name": "Crossover na Polia Baixa"
+    },
+    {
+        "id": 9,
+        "name": "Crossover na Polia Média"
+    },
+    {
+        "id": 10,
+        "name": "Pullover"
+    }
+]

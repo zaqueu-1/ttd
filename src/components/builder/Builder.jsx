@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { toast } from 'react-toastify';
 import React from 'react'
 import './builder.css'
-import { MdAddBox } from 'react-icons/md'
+import { MdAddBox, MdDelete, MdEdit} from 'react-icons/md'
 
 function Builder() {
 
@@ -21,7 +21,7 @@ function Builder() {
             exerciseName: exercise,
             setsNum: sets,
             repsNum: reps,
-            key: Date.now(),
+            id: Date.now(),
         }
     
         if (!exercise || !sets || !reps) {
@@ -36,8 +36,8 @@ function Builder() {
     const [selectedExercise, setSelectedExercise] = useState({});
     const [showEditForm, setShowEditForm] = useState(false);
 
-    const editExercise = (key) => {
-        const selected = exercises[key];
+    const editExercise = (id) => {
+        const selected = exercises[id];
 
         setSelectedExercise(selected);
         setShowEditForm(true);
@@ -56,60 +56,61 @@ function Builder() {
         setShowEditForm(false);
     };
     
-    const deleteExercise = (key) => {
-        const selected = exercises[key];
-        setSelectedExercise(selected);
-
-        const updatedExercises = exercises.filter((e) => e.key !== key)
+    const deleteExercise = (id) => {
+        const updatedExercises = exercises.filter((ex) => ex.id !== id)
         setExercises(updatedExercises)
+
         localStorage.setItem("exercises", JSON.stringify(updatedExercises))
     }
       
   return (
     <div>
-        {showEditForm ? (
-        <div className="inputs-container">
-      <form onSubmit={updateExercise}>
-        <input className='exercise-input' 
-          type="text"
-          required
-          value={exercise}
-          onChange={(e) => setExercise(e.target.value)} />
-        <input className='sets-input'
-          type="number"
-          min='1'
-          required
-          value={sets}
-          onChange={(e) => setSets(e.target.value)} />
-        <input className='reps-input' 
-          type="number"
-          min='1'
-          required
-          value={reps}
-          onChange={(e) => setReps(e.target.value)} />
-        <button className='update-btn' type="submit">Update</button>
-      </form>
-      </div>
+    {showEditForm ? (
+        <div>
+            <form className="inputs-container" onSubmit={updateExercise}>
+                <input className='exercise-input' 
+                        type="text"
+                        placeholder='Nome do exercício' 
+                        value={exercise}
+                        onChange={(e) => setExercise(e.target.value)} />
+                <div className='sets-reps-container'>
+                    <input className='sets-input'
+                            type="number"
+                            placeholder='séries'
+                            min='1'
+                            value={sets}
+                            onChange={(e) => setSets(e.target.value)} />
+                    <input className='reps-input' 
+                            type="number"
+                            placeholder='repetições'
+                            min='1'
+                            value={reps}
+                            onChange={(e) => setReps(e.target.value)} />
+                    <button className='update-btn' type="submit">Atualizar</button>
+                    <button className='cancel-btn' onClick={() => showEditForm(false)}>Cancelar</button>
+                </div>
+            </form>
+        </div>
     ) : (
         <div>
             <form className="inputs-container" onSubmit={handleSubmit}>
                 <input className='exercise-input' 
                         type="text" 
-                        placeholder='Busque um exercício' 
+                        placeholder='Digite o nome do exercício' 
                         name='exercise'
                         value={exercise}
                         onChange={(e) => setExercise(e.target.value)} />
                 <div className='sets-reps-container'>
                     <input className='sets-input' 
                             type='number' 
-                            placeholder='4 séries'
+                            placeholder='séries'
                             min='1'
                             name='sets'
                             value={sets} 
                             onChange={(e) => setSets(e.target.value)} />
                     <input className='reps-input' 
                             type='number' 
-                            placeholder='12 repetições'
+                            placeholder='repetições'
                             min='1'
                             name='reps'
                             value={reps} 
@@ -120,18 +121,18 @@ function Builder() {
         </div>)}
 
         <div className="preview-container">
-            <p className="workout-name">A</p>
-
-                {exercises.map((e, key) => (
-                <div className="exercise" key={key}>
-                    <p className="exercise-name">{e.exerciseName}</p>
-                    <p className="sets-number">{e.setsNum} Séries</p>
-                    <p className="reps-number">{e.repsNum} Reps</p>
-                    <button className="delete-btn" onClick={() => deleteExercise(key)}>X</button>
-                    <button className="edit-btn" onClick={() => editExercise(key)}>Edit</button>
+                {exercises.map((ex) => (
+                <div className='exercise-list' key={ex.id}>
+                    <div className={showEditForm ? 'exercise selected' : 'exercise'} >
+                        <p className="exercise-name">{ex.exerciseName}</p>
+                        <p className="sets-number">{ex.setsNum} x {ex.repsNum}</p>
+                    </div>
+                    <div className="controls">
+                        <button className="delete-btn" onClick={() => deleteExercise(ex.id)}><MdDelete /></button>
+                        <button className="edit-btn" onClick={(e) => editExercise(e, ex.id)}><MdEdit /></button>
+                    </div>
                 </div>
                 ))}
-
         </div>
     </div>
   )

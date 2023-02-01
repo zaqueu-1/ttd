@@ -19,16 +19,17 @@
 
   .exercise-input, .sets-input, .reps-input {
     border-radius: 8px;
-    border: 4px solid transparent;
-    font-size: 1.5rem;
+    border: 5px solid transparent;
+    font-size: 1.3rem;
     padding: 1.2rem;
     height: 20px;
     transition: all 0.3s;
+    color: #585858;
   }
 
   .exercise-input:focus, .sets-input:focus, .reps-input:focus {
     outline: none;
-    border: 4px solid rgb(72, 166, 72);
+    border: 5px solid #48a648;
   }
 
   .exercise-input {
@@ -37,7 +38,7 @@
   }
 
   .sets-input, .reps-input {
-    width: 40%;
+    width: 25%;
   }
 
   .reps-input { 
@@ -52,17 +53,84 @@
     display: flex;
     color: rgb(72, 166, 72);
     transition: all 0.3s;
+    cursor: pointer;
   }
 
   .submit-btn:hover {
     color: rgb(58, 134, 58);
   }
 
-  .update-btn {
+  .update-btn, .cancel-btn {
+    margin-left: .5rem;
+    background: rgb(89, 120, 208);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: white;
+    padding: .4rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .update-btn:hover {
+    color: white;
+    background: rgb(65, 89, 154);
+  }
+
+  .cancel-btn {
+    background: rgb(231, 81, 81);
+  }
+
+  .cancel-btn:hover {
+    background: rgb(177, 60, 60);
 
   }
   
-  .exercise {
+  .exercise-list {
     display: flex;
     justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+  }
+
+  .exercise {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    padding: .5rem 2rem;
+    margin: .25rem 0;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background-color: rgb(58, 134, 58);
+  }
+
+  .selected {
+    border: 2px solid white;
+  }
+
+  .exercise-name, .sets-number {
+    color: white;
+    font-size: 1.5rem;
+    padding: .5rem;
+  }
+
+  .sets-number {
+    background-color: rgb(73, 167, 73, 0.5);
+  }
+
+  .edit-btn, .delete-btn {
+    margin-left: .5rem;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+    padding: .5rem;
+  }
+
+  .edit-btn:hover, .delete-btn:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
   }
