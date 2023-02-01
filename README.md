@@ -5,10 +5,10 @@
 Exercise planning app.
 
 ## Demo
-![demo]()
+![demo](https://github.com/zaqueu-1/ttd/blob/main/chrome-capture-2023-1-1.gif)
 
 ## Deploy
-SOON!
+https://ttd-zaqueu-1.vercel.app/
 
 
 ## Roadmap
