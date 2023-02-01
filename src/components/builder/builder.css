@@ -1,0 +1,68 @@
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem auto;
+    border: 2px solid transparent;
+    border-radius: 12px;
+  }
+
+  .sets-reps-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .exercise-input, .sets-input, .reps-input {
+    border-radius: 8px;
+    border: 4px solid transparent;
+    font-size: 1.5rem;
+    padding: 1.2rem;
+    height: 20px;
+    transition: all 0.3s;
+  }
+
+  .exercise-input:focus, .sets-input:focus, .reps-input:focus {
+    outline: none;
+    border: 4px solid rgb(72, 166, 72);
+  }
+
+  .exercise-input {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+
+  .sets-input, .reps-input {
+    width: 40%;
+  }
+
+  .reps-input { 
+    margin-left: 1rem;
+  }
+
+  .submit-btn {
+    margin-left: .2rem;
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    display: flex;
+    color: rgb(72, 166, 72);
+    transition: all 0.3s;
+  }
+
+  .submit-btn:hover {
+    color: rgb(58, 134, 58);
+  }
+
+  .update-btn {
+
+  }
+  
+  .exercise {
+    display: flex;
+    justify-content: center;
+  }
