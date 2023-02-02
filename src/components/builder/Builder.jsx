@@ -32,34 +32,48 @@ function Builder() {
             return;
         }
 
-        toast.success('Exercício adicionado!')
         setExercises([...exercises, newExercise])
         localStorage.setItem("exercises", JSON.stringify([...exercises, newExercise]));
         setExercise('')
+        toast.success('Exercício adicionado!')
     }
 
     const [selectedExercise, setSelectedExercise] = useState({});
     const [showEditForm, setShowEditForm] = useState(false);
 
-    const editExercise = (id) => {
-        const selected = exercises[id];
+    const editExercise = (e, id) => {
+        const selected = exercises.find(ex => ex.id === id);
 
         setSelectedExercise(selected);
+
+        setExercise(selected.exerciseName)
+        setReps(selected.repsNum)
+        setSets(selected.setsNum)
+        setWeights(selected.weightsNum)
+
         setShowEditForm(true);
     };
     
-    const updateExercise = (e) => {
+    const updateExercise = (e, id) => {
         e.preventDefault();
-
+    
         const exerciseToEdit = { exerciseName: exercise, setsNum: sets, repsNum: reps, weightsNum: weights};
-        const newExercises = [...exercises];
-        
-        newExercises[exercises.indexOf(selectedExercise)] = exerciseToEdit;
-
+        const newExercises = exercises.map(ex => ex.id === selectedExercise.id ? { ...ex, ...exerciseToEdit } : ex);
+            
         localStorage.setItem('exercises', JSON.stringify(newExercises));
         setExercises(newExercises);
+        clear()
         setShowEditForm(false);
+        toast.success('Edições concluídas!')
     };
+
+    const clear = () => {
+        setExercise('')
+        setReps('')
+        setSets('')
+        setWeights('')
+    }
+    
     
     const deleteExercise = (id) => {
         const updatedExercises = exercises.filter((ex) => ex.id !== id)
@@ -107,6 +121,7 @@ function Builder() {
                 <input className='exercise-input' 
                         type="text"
                         placeholder='Nome do exercício' 
+                        required
                         value={exercise}
                         onChange={(e) => setExercise(e.target.value)} />
                 <div className='sets-reps-container'>
@@ -114,18 +129,21 @@ function Builder() {
                             type="number"
                             placeholder='séries'
                             min='1'
+                            required
                             value={sets}
                             onChange={(e) => setSets(e.target.value)} />
                     <input className='reps-input' 
                             type="number"
                             placeholder='repetições'
                             min='1'
+                            required
                             value={reps}
                             onChange={(e) => setReps(e.target.value)} />
                     <input className='reps-input' 
                             type="number"
                             placeholder='carga'
                             min='1'
+                            required
                             value={weights}
                             onChange={(e) => setWeights(e.target.value)} />
                     <button className='update-btn' type="submit">Atualizar</button>
