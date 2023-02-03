@@ -82,8 +82,10 @@ function Builder() {
         localStorage.setItem("exercises", JSON.stringify(updatedExercises))
         toast.error('Exercício deletado!')
 
-        if (exercises.length=1) {
+        if (exercises.length===1) {
             clear()
+            localStorage.setItem("exercises", JSON.stringify([]))
+            toast.error('Exercício deletado!')
         }
     }
 
@@ -133,6 +135,7 @@ function Builder() {
           reader.onload = function () {
             const exercises = JSON.parse(reader.result);
             setExercises(exercises);
+            localStorage.setItem('exercises', JSON.stringify(exercises))
             toast.success('Treino carregado com sucesso!')
           };
         };

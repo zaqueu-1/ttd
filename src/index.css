@@ -8,7 +8,7 @@
 }
 
 body {
-  background: linear-gradient(to left,  rgb(19, 19, 19), rgb(47, 47, 47));
+  background: linear-gradient(to left,  rgb(27, 27, 27), rgb(69, 69, 69));
   max-width: 100vw;
   overflow-x: hidden;
 }
