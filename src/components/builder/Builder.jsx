@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import React from 'react'
 import './builder.css'
 import { MdAddBox, MdDelete, MdEdit} from 'react-icons/md'
+import 'animate.css';
 
 function Builder() {
 
@@ -15,6 +16,8 @@ function Builder() {
         return storedExercises ? JSON.parse(storedExercises) : [];
       });
 
+      useEffect(() => console.log('opa'),[exercises]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -23,8 +26,8 @@ function Builder() {
             setsNum: sets,
             repsNum: reps,
             weightsNum: weights, 
-            id: Date.now(),
             finished: finished,
+            id: Date.now(),
         }
     
         if (!exercise || !sets || !reps) {
@@ -85,7 +88,6 @@ function Builder() {
         if (exercises.length===1) {
             clear()
             localStorage.setItem("exercises", JSON.stringify([]))
-            toast.error('Exercício deletado!')
         }
     }
 
@@ -101,8 +103,6 @@ function Builder() {
     }
 
     const [listName, setListName] = useState('')
-
-    useEffect(() => console.log('opa'), [exercises]);
 
     const downloadExercises = () => {
         if (listName.length>0 && listName.trim('') !== '') {
@@ -191,7 +191,7 @@ function Builder() {
                                     value={weights}
                                     onChange={(e) => setWeights(e.target.value)} />
                                 <button className='update-btn' type="submit">Atualizar</button>
-                                 <button className='cancel-btn' onClick={() => showEditForm(false)}>Cancelar</button>
+                                <button className='cancel-btn' onClick={() => showEditForm(false)}>Cancelar</button>
                 </div>
             </form>
         </div>
@@ -236,7 +236,7 @@ function Builder() {
             </form>
         </div>)}
 
-        <div className="preview-container">
+        <div className="preview-container animate__animated animate__fadeInUp">
                 {exercises && (exercises.map((ex) => (
                 <div className='exercise-list' key={ex.id}>
                     <div className={showEditForm ? 'exercise selected' :
@@ -270,7 +270,7 @@ function Builder() {
                     <div className="save-controls">
                         <button className='download-btn' onClick={downloadExercises}>Baixar</button>
                         <button className='load-btn' onClick={loadExercises}>Carregar</button>
-                        <button className='clear-btn' onClick={clearList}>Limpar lista</button>
+                        <button className='clear-btn' onClick={clearList}>Limpar</button>
                     </div>
                 </>
                 )}

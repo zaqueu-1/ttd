@@ -7,6 +7,11 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+:root {
+  --animate-duration: 950ms;
+  --animate-delay: 1.2s;
+}
+
 body {
   background: linear-gradient(to left,  rgb(27, 27, 27), rgb(69, 69, 69));
   max-width: 100vw;
