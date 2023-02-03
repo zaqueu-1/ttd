@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    max-width: 900px;
     justify-content: center;
     align-items: center;
     margin: 1rem auto 2rem auto;
@@ -60,7 +61,7 @@
     color: rgb(58, 134, 58);
   }
 
-  .update-btn, .cancel-btn {
+  .update-btn, .cancel-btn, .load-btn, .download-btn, .clear-btn {
     margin-left: .5rem;
     background: rgb(89, 120, 208);
     border: 2px solid transparent;
@@ -72,16 +73,16 @@
     cursor: pointer;
   }
 
-  .update-btn:hover {
+  .update-btn:hover, .load-btn:hover, .download-btn:hover {
     color: white;
     background: rgb(65, 89, 154);
   }
 
-  .cancel-btn {
+  .cancel-btn, .clear-btn {
     background: rgb(231, 81, 81);
   }
 
-  .cancel-btn:hover {
+  .cancel-btn:hover, .clear-btn:hover {
     background: rgb(177, 60, 60);
   }
   
@@ -96,13 +97,16 @@
 
   .exercise {
     display: flex;
-    width: 55%;
+    width: 40%;
+    max-width: 550px;
+    min-width: 450px;
     justify-content: space-between;
     align-items: center;
-    padding: .2rem;
-    margin: .25rem 0 .25rem 1rem;
+    padding: .25rem;
+    margin: .3rem 0 0 1rem;
     border: 2px solid transparent;
-    border-radius: 12px;
+    border-right: 4px solid rgba(196, 251, 190, 0.8);
+    border-radius: 8px 0 0 8px;
     background-color: rgb(58, 134, 58);
     transition: all 0.3s;
   }
@@ -127,13 +131,15 @@
 
   .stats {
     display: flex;
+    align-items: center;
   }
 
   .sets-number {
-    color: white;
-    font-size: 1.4rem;
-    padding: .3rem;
-    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    padding: .2rem;
+    border: 2px outset rgb(255, 255, 255, 0.15);
+    background-color: rgb(255, 255, 255, 0.15);
   }
 
   .weights-number {
@@ -142,6 +148,8 @@
     padding: .3em;
     margin-right: 1rem;
     border-radius: 8px;
+    border: 2px dashed rgb(255, 255, 255, 0.3);
+    background-color: rgba(74, 74, 74, 0.5);
   }
 
   .exercise-name {
@@ -184,70 +192,60 @@
 
   .save-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: center;
     margin: 1rem auto 2rem auto;
     padding: 1rem;
-    max-width: 100%;
+    max-width: 25%;
   }
 
   .save-input {
     border-radius: 8px;
     outline: none;
-    border: 2px solid transparent;
+    border: 4px solid transparent;
     font-size: 1.3rem;
-    padding: 0.8rem;
-    height: 15px;
+    padding: .5rem;
+    width: 100%;
     transition: all 0.3s;
-    color: #585858;
+    color: #797979;
   }
 
   .save-input:focus {
     border-radius: 8px;
-    border: 2px solid rgb(112, 112, 112);
-    font-size: 1.3rem;
-    padding: 0.8rem;
-    height: 15px;
-    transition: all 0.3s;
-    color: #585858;
+    border: 4px solid rgb(112, 112, 112);
   }
 
-  .save-btn {
-    margin-left: .2rem;
-    background: transparent;
-    border: none;
-    font-size: 2.2rem;
+  .save-controls {
     display: flex;
-    color: rgb(112, 112, 112);
-    transition: all 0.3s;
-    cursor: pointer;
+    margin-top: .5rem;
+    height: 40px;
   }
 
-  .save-btn:hover {
-    color: rgb(58, 134, 58);
-  }
-
-  .selector-container {
+  .no-exercises {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    padding: .5rem;
+    margin: -3rem auto;
+    padding: 2rem;
+    width: 50%;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.15);
   }
 
-  .selector-container .delete-btn {
-    margin-left: .3rem;
-    margin-bottom: -.2rem;
+  .no-exercises p {
+    color: white;
+    font-size: 1.7rem;
+    margin-bottom: -1rem;
   }
 
-  .list-selector {
-    margin-left: 1rem;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
+  .no-exercises p:last-child {
+    color: rgb(216, 216, 216);
+    font-size: 1.4rem;
+    margin-bottom: 0;
   }
 
-  @media all and (max-width: 500px) {
+  @media all and (max-width: 580px) {
     .inputs-container {
       width: 100%;
       min-width: 350px;
@@ -320,8 +318,8 @@
       padding: 0;
     }
   
-    .update-btn, .cancel-btn {
-      margin: 0 .2rem;
+    .update-btn, .cancel-btn, .load-btn, .download-btn, .clear-btn {
+      margin: 0;
       font-size: .8rem;
       padding: .15rem;
       border-radius: 4px;
@@ -332,15 +330,16 @@
       justify-content: center;
       align-items: center;
       border: 2px solid transparent;
-      padding: 0 .8rem;
-      margin: 1rem 0;
+      padding: 0 1rem;
+      margin: 0;
       width: 100%;
       min-width: 350px;
     }
   
     .exercise {
       display: flex;
-      width: 100%;
+      width: 80%;
+      min-width: 280px;
       padding: .5rem;
       margin: 0 .3rem;
     }
@@ -375,6 +374,7 @@
     .input-checkbox {
       width: 18px;
       padding: 0;
+      margin: 0;
     }
   
     .controls {
@@ -391,42 +391,62 @@
     }
   
     .save-container {
-      width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      margin: 1rem 1.4rem;
-      padding: 0;
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: 50%;
+      min-width: 350px;
     }
   
     .save-input {
-      font-size: 1rem;
+      border-radius: 8px;
+      outline: none;
+      border: 4px solid transparent;
+      font-size: .8rem;
+      padding: .5rem;
+      margin: .5rem -.5rem;
+      width: 60%;
     }
   
     .save-input:focus {
+      border-radius: 8px;
+      border: 4px solid rgb(112, 112, 112);
+    }
+  
+    .save-controls {
+      display: flex;
+      margin-top: 0;
+      height: 30px;
+    }
+
+    .load-btn, .download-btn, .clear-btn {
+      margin: 0 .15rem;
+    }
+
+    .no-exercises {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: -3rem auto;
+      padding: 2rem;
+      width: 90%;
+      border-radius: 16px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  
+    .no-exercises p {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: -.5rem;
+    }
+  
+    .no-exercises p:last-child {
+      color: rgb(216, 216, 216);
       font-size: 1rem;
+      margin-bottom: .5rem;
     }
-  
-    .save-btn {
-      font-size: 2rem;
-    }
-  
-    .save-btn:hover {
-      color: rgb(58, 134, 58);
-    }
-  
-    .selector-container {
-      padding: 0;
-      margin: .5rem 0;
-    }
-  
-    .selector-container .delete-btn {
-      margin-left: .3rem;
-      margin-bottom: -.2rem;
-    }
-  
-    .list-selector {
-      margin-left: 0;
-    }
+
   }

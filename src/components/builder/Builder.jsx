@@ -75,12 +75,16 @@ function Builder() {
     }
     
     
-    const deleteExercise = (id) => {
+    const deleteExercise = (e, id) => {
         const updatedExercises = exercises.filter((ex) => ex.id !== id)
-        setExercises(updatedExercises)
 
+        setExercises(updatedExercises)
         localStorage.setItem("exercises", JSON.stringify(updatedExercises))
         toast.error('Exercício deletado!')
+
+        if (exercises.length=1) {
+            clear()
+        }
     }
 
     const [finished, setFinished] = useState(false)
@@ -95,52 +99,54 @@ function Builder() {
     }
 
     const [listName, setListName] = useState('')
-    const [listArray, setListArray] = useState(() => {
-        const storedListArray = localStorage.getItem("listArray");
-        return storedListArray ? JSON.parse(storedListArray) : [];
-      });
 
-    useEffect(() => console.log('after first render'), [listArray.length]);
+    useEffect(() => console.log('opa'), [exercises]);
 
-    const handleSave = (e) => {
-        e.preventDefault()
-
+    const downloadExercises = () => {
         if (listName.length>0 && listName.trim('') !== '') {
-            let newList = {
-                name: listName,
-                exercises: exercises,
-                id: Date.now(),
-            } 
-            listArray.push(newList)
-            toast.success('Treino salvo com sucesso!')
-            localStorage.setItem("listArray", JSON.stringify(listArray));
+            const data = JSON.stringify(exercises);
+            const blob = new Blob([data], { type: 'application/json' });
+            const href = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = href;
+            link.download = `${listName}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
             setListName('')
+            toast.success('Treino baixado com sucesso!')
         } else if (listName.trim('') === '') {
             toast.warn('Digite um nome para o treino!')
         }
+      };
+
+      const loadExercises = () => {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = ".json";
+      
+        input.onchange = function () {
+          const file = input.files[0];
+          const reader = new FileReader();
+          reader.readAsText(file);
+      
+          reader.onload = function () {
+            const exercises = JSON.parse(reader.result);
+            setExercises(exercises);
+            toast.success('Treino carregado com sucesso!')
+          };
+        };
+      
+        input.click();
+      };
+
+      const clearList = () => {
+        clear()
+        setExercises([])
+        localStorage.setItem("exercises", JSON.stringify([]))
+        toast.error('Lista de exercícios apagada!')
     }
-
-    const [selectedList, setSelectedList] = useState('')
-
-    const handleSelectedList = (e) => {
-        let newSelectedList = e.target.value
-
-        setSelectedList(newSelectedList)
-        const filteredList = listArray.filter((list) => list.id === +newSelectedList)
-
-        setExercises(filteredList[0].exercises)
-        toast.success('Treino carregado!')
-    }
-
-    const deleteList = (e) => {
-        const updatedListArray = listArray.filter((list) => list.id !== selectedList)
-        console.log(selectedList)
-        console.log(updatedListArray)
-        setListArray(updatedListArray)
-
-        localStorage.setItem("listArray", JSON.stringify(updatedListArray))
-        toast.error('Treino deletado!')
-    }
+    
 
   return (
     <div>
@@ -201,7 +207,7 @@ function Builder() {
                 <div className='sets-reps-container'>
                         <input className='sets-input' 
                                 type='number' 
-                                placeholder='séries'
+                                placeholder='Séries'
                                 min='1'
                                 max='99'
                                 name='sets'
@@ -209,14 +215,14 @@ function Builder() {
                                 onChange={(e) => setSets(e.target.value)} />
                         <input className='reps-input' 
                                 type='number' 
-                                placeholder='repetições'
+                                placeholder='Repetições'
                                 min='1'
                                 max='99'
                                 value={reps} 
                                 onChange={(e) => setReps(e.target.value)} />
                         <input className='reps-input' 
                                 type='number' 
-                                placeholder='carga'
+                                placeholder='Carga'
                                 min='1'
                                 max='999'
                                 name='weights'
@@ -236,12 +242,12 @@ function Builder() {
                         <input  className='input-checkbox' onChange={(e) => finishedToggle(e, ex.id)} checked={ex.finished} type='checkbox'></input>
                         <p className="exercise-name">{ex.exerciseName}</p>
                         <div className="stats">
-                            <p style={ex.finished ? { backgroundColor: '#818f8950'} : {backgroundColor: '#84a78480'}} className='sets-number'>{ex.setsNum} x {ex.repsNum}</p>
-                            <p style={ex.finished ? { backgroundColor: '#818f8950'} : {backgroundColor: '#84a78480'}} className='weights-number'>{ex.weightsNum}kg</p>
+                            <p className='sets-number'>{ex.setsNum}x{ex.repsNum}</p>
+                            <p className='weights-number'>{ex.weightsNum}kg</p>
                         </div>
                     </div>
                     <div className="controls">
-                        <button className="delete-btn" onClick={() => deleteExercise(ex.id)}><MdDelete /></button>
+                        <button className="delete-btn" onClick={(e) => deleteExercise(e, ex.id)}><MdDelete /></button>
                         <button className="edit-btn" onClick={(e) => editExercise(e, ex.id)}><MdEdit /></button>
                     </div>
                 </div>
@@ -249,7 +255,7 @@ function Builder() {
 
         <div className="save-container">
             {exercises.length>0 && (
-                <div style={{display: 'flex', alignItems: 'center'}}>
+                <>
                     <input className='save-input' 
                             type='text' 
                             placeholder='Nome do treino'
@@ -258,20 +264,28 @@ function Builder() {
                             required
                             value={listName} 
                             onChange={(e) => setListName(e.target.value)} />
-                    <button className="save-btn" onClick={handleSave} type='submit'><MdAddBox /></button>
-                </div>)}
-
-        <div className="selector-container">
-            {listArray.length>0 && (
-                <select name="list" value={selectedList} onChange={(e) => handleSelectedList(e)} className="list-selector">
-                    {(listArray.map((list) => (
-                        <option value={list.id} id={list.id} className="option-name">{list.name}</option>
-                    )))}
-                </select>)}             
-            {listArray.length>0 ? <button className="delete-btn" onClick={deleteList}><MdDelete /></button> : ''}
+                    <div className="save-controls">
+                        <button className='download-btn' onClick={downloadExercises}>Baixar</button>
+                        <button className='load-btn' onClick={loadExercises}>Carregar</button>
+                        <button className='clear-btn' onClick={clearList}>Limpar lista</button>
+                    </div>
+                </>
+                )}
         </div>
-        </div>
-        </div>
+        <>
+        {exercises.length<=0 && (
+                <div className="no-exercises">
+                    <div className="text-message">
+                        <p>Parece que você ainda não adicionou um exercício...</p><br/>
+                        <p>Se já tiver um treino salvo, pode carregá-lo abaixo: </p>
+                    </div>
+                    <div className="save-controls">
+                        <button className='load-btn' onClick={loadExercises}>Carregar</button>
+                    </div>
+                </div>
+            )}
+        </>
+    </div>
     </div>
   )
 }
