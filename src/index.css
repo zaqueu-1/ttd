@@ -9,6 +9,7 @@
 
 body {
   background: linear-gradient(to left,  rgb(19, 19, 19), rgb(47, 47, 47));
+  max-width: 100vw;
 }
 
 ::placeholder { 
