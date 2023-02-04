@@ -235,14 +235,15 @@
 
   .no-exercises p {
     color: white;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     margin-bottom: -1rem;
   }
 
   .no-exercises p:last-child {
     color: rgb(216, 216, 216);
-    font-size: 1.4rem;
-    margin-bottom: 0;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: .5rem;
   }
 
   @media all and (max-width: 580px) {
@@ -451,3 +452,7 @@
     }
 
   }
+
+
+
+
