@@ -279,7 +279,7 @@ function Builder() {
         {exercises.length<=0 && (
                 <div className="no-exercises">
                     <div className="text-message">
-                        <p>Parece que você ainda não adicionou um exercício...</p><br/>
+                        <p>🏋️ Parece que você ainda não adicionou um exercício...</p><br/>
                         <p>Se já tiver um treino salvo, pode carregá-lo abaixo: </p>
                     </div>
                     <div className="save-controls">

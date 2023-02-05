@@ -218,6 +218,7 @@
 
   .save-controls {
     display: flex;
+    justify-content: flex-end;
     margin-top: .5rem;
     height: 40px;
   }
@@ -443,6 +444,7 @@
       color: white;
       font-size: 1.2rem;
       margin-bottom: -.5rem;
+      text-align: center;
     }
   
     .no-exercises p:last-child {
@@ -453,6 +455,4 @@
 
   }
 
-
-
-
+ 

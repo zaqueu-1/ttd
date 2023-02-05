@@ -12,4 +12,3 @@ root.render(
     <ToastContainer autoClose={1500} closeOnClick />
   </React.StrictMode>
 );
-
