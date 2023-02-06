@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import { toast } from 'react-toastify';
 import React from 'react'
 import './builder.css'
+import 'animate.css'
 import { MdAddBox, MdDelete, MdEdit} from 'react-icons/md'
-import 'animate.css';
 
 function Builder() {
 
