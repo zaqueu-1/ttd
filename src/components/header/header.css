@@ -2,13 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: -2rem;
-}
-
-.title-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 auto -2rem auto;
 }
 
 .header-logo {
@@ -17,12 +11,14 @@
 }
 
 @media all and (max-width: 500px) {
-    .title-container {
-        margin-top: 1rem;
+
+    .header-container {
+        margin: 0 auto -3rem auto;
     }
 
+    
     .header-logo {
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
 }
