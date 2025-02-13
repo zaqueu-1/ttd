@@ -1,0 +1,52 @@
+{
+  "translation": {
+    "app": {
+      "title": "tá pago",
+      "subtitle": "your workout buddy"
+    },
+    "exercise": {
+      "name": "Exercise name",
+      "sets": "Sets",
+      "reps": "Reps",
+      "weight": "Weight",
+      "placeholder": {
+        "name": "Enter exercise name",
+        "sets": "Sets",
+        "reps": "Reps",
+        "weight": "Weight (kg)"
+      }
+    },
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "update": "Update",
+      "cancel": "Cancel",
+      "save": "Save",
+      "export": "Export",
+      "load": "Load",
+      "clear": "Clear"
+    },
+    "modal": {
+      "export": {
+        "title": "Export Workout",
+        "placeholder": "Workout name",
+        "success": "Workout exported successfully!",
+        "error": "Please enter a workout name!"
+      }
+    },
+    "messages": {
+      "fillFields": "Please fill all fields!",
+      "exerciseAdded": "Exercise added!",
+      "exerciseDeleted": "Exercise deleted!",
+      "exerciseUpdated": "Updates completed!",
+      "listCleared": "Exercise list cleared!",
+      "workoutLoaded": "Workout loaded successfully!",
+      "loadError": "Error loading file. Make sure it's a valid Excel file."
+    },
+    "noExercises": {
+      "message": "🏋️ You haven't added any exercises yet...",
+      "submessage": "if you have a saved workout, you can load it below:"
+    }
+  }
+}

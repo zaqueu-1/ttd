@@ -1,0 +1,52 @@
+{
+  "translation": {
+    "app": {
+      "title": "tá pago",
+      "subtitle": "seu parceiro de treino"
+    },
+    "exercise": {
+      "name": "Nome do exercício",
+      "sets": "Séries",
+      "reps": "Repetições",
+      "weight": "Carga",
+      "placeholder": {
+        "name": "Digite o nome do exercício",
+        "sets": "Séries",
+        "reps": "Repetições",
+        "weight": "Carga (kg)"
+      }
+    },
+    "actions": {
+      "add": "Adicionar",
+      "edit": "Editar",
+      "delete": "Deletar",
+      "update": "Atualizar",
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "export": "Exportar",
+      "load": "Carregar",
+      "clear": "Limpar"
+    },
+    "modal": {
+      "export": {
+        "title": "Exportar Treino",
+        "placeholder": "Nome do treino",
+        "success": "Treino exportado com sucesso!",
+        "error": "Digite um nome para o treino!"
+      }
+    },
+    "messages": {
+      "fillFields": "Preencha todos os campos!",
+      "exerciseAdded": "Exercício adicionado!",
+      "exerciseDeleted": "Exercício deletado!",
+      "exerciseUpdated": "Edições concluídas!",
+      "listCleared": "Lista de exercícios apagada!",
+      "workoutLoaded": "Treino carregado com sucesso!",
+      "loadError": "Erro ao carregar o arquivo. Certifique-se de que é um arquivo Excel válido."
+    },
+    "noExercises": {
+      "message": "🏋️ Você ainda não adicionou um exercício...",
+      "submessage": "Se já tiver um treino salvo, pode carregá-lo abaixo:"
+    }
+  }
+}

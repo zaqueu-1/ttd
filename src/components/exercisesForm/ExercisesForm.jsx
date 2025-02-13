@@ -1,15 +1,18 @@
 import { useState } from "react"
 import { toast } from "react-toastify"
+import { useTranslation } from "react-i18next"
 import React from "react"
 import "./exercisesForm.css"
 import "animate.css"
-import { MdAddBox, MdDelete, MdEdit, MdUploadFile } from "react-icons/md"
+import { MdAddBox, MdDelete, MdEdit } from "react-icons/md"
 import SaveModal from "../saveModal/SaveModal"
 import NoExercises from "../noExercises/NoExercises"
 import SaveControls from "../saveControls/SaveControls"
 import * as XLSX from "xlsx"
 
 function ExercisesForm() {
+  const { t } = useTranslation()
+
   const initialExercise = {
     exerciseName: "",
     setsNum: "",
@@ -33,7 +36,7 @@ function ExercisesForm() {
       !exerciseForm.setsNum ||
       !exerciseForm.repsNum
     ) {
-      toast.warn("Preencha todos os campos!")
+      toast.warn(t("messages.fillFields"))
       return
     }
 
@@ -48,7 +51,7 @@ function ExercisesForm() {
       JSON.stringify([...exercises, newExercise]),
     )
     setExerciseForm(initialExercise)
-    toast.success("Exercício adicionado!")
+    toast.success(t("messages.exerciseAdded"))
   }
 
   const [selectedExercise, setSelectedExercise] = useState({})
@@ -72,7 +75,7 @@ function ExercisesForm() {
     setExercises(newExercises)
     clear()
     setShowEditForm(false)
-    toast.success("Edições concluídas!")
+    toast.success(t("messages.editionsCompleted"))
   }
 
   const clear = () => {
@@ -84,7 +87,7 @@ function ExercisesForm() {
 
     setExercises(updatedExercises)
     localStorage.setItem("exercises", JSON.stringify(updatedExercises))
-    toast.error("Exercício deletado!")
+    toast.error(t("messages.exerciseDeleted"))
 
     if (exercises.length === 1) {
       clear()
@@ -132,11 +135,9 @@ function ExercisesForm() {
 
           setExercises(exercisesData)
           localStorage.setItem("exercises", JSON.stringify(exercisesData))
-          toast.success("Treino carregado com sucesso!")
+          toast.success(t("messages.workoutLoaded"))
         } catch (error) {
-          toast.error(
-            "Erro ao carregar o arquivo. Certifique-se de que é um arquivo Excel válido.",
-          )
+          toast.error(t("messages.loadError"))
           console.error("Erro ao carregar arquivo:", error)
         }
       }
@@ -151,7 +152,7 @@ function ExercisesForm() {
     clear()
     setExercises([])
     localStorage.setItem("exercises", JSON.stringify([]))
-    toast.error("Lista de exercícios apagada!")
+    toast.error(t("messages.listCleared"))
   }
 
   return (
@@ -161,7 +162,7 @@ function ExercisesForm() {
           <input
             className='exercise-input'
             type='text'
-            placeholder='Nome do exercício'
+            placeholder={t("exercise.name")}
             maxLength='40'
             required
             value={exerciseForm.exerciseName}
@@ -176,7 +177,7 @@ function ExercisesForm() {
             <input
               className='sets-input'
               type='number'
-              placeholder='séries'
+              placeholder={t("exercise.sets")}
               min='1'
               max='99'
               required
@@ -188,7 +189,7 @@ function ExercisesForm() {
             <input
               className='reps-input'
               type='number'
-              placeholder='repetições'
+              placeholder={t("exercise.reps")}
               min='1'
               max='99'
               required
@@ -200,7 +201,7 @@ function ExercisesForm() {
             <input
               className='reps-input'
               type='number'
-              placeholder='carga'
+              placeholder={t("exercise.weight")}
               min='1'
               max='999'
               required
@@ -213,13 +214,13 @@ function ExercisesForm() {
               }
             />
             <button className='update-btn' type='submit'>
-              OK
+              {t("actions.update")}
             </button>
             <button
               className='cancelUpdate-btn'
               onClick={() => setShowEditForm(false)}
             >
-              Cancelar
+              {t("actions.cancel")}
             </button>
           </div>
         </form>
@@ -228,7 +229,7 @@ function ExercisesForm() {
           <input
             className='exercise-input'
             type='text'
-            placeholder='Digite o nome do exercício'
+            placeholder={t("exercise.name")}
             name='exercise'
             maxLength='40'
             value={exerciseForm.exerciseName}
@@ -243,7 +244,7 @@ function ExercisesForm() {
             <input
               className='sets-input'
               type='number'
-              placeholder='Séries'
+              placeholder={t("exercise.sets")}
               min='1'
               max='99'
               name='sets'
@@ -255,7 +256,7 @@ function ExercisesForm() {
             <input
               className='reps-input'
               type='number'
-              placeholder='Reps'
+              placeholder={t("exercise.reps")}
               min='1'
               max='99'
               value={exerciseForm.repsNum}
@@ -266,7 +267,7 @@ function ExercisesForm() {
             <input
               className='reps-input'
               type='number'
-              placeholder='Carga'
+              placeholder={t("exercise.weight")}
               min='1'
               max='999'
               name='weights'
@@ -305,7 +306,14 @@ function ExercisesForm() {
                     checked={ex.finished}
                     type='checkbox'
                   ></input>
-                  <p className='exercise-name' style={ex.finished ? {textDecoration: 'line-through'} : null}>{ex.exerciseName}</p>
+                  <p
+                    className='exercise-name'
+                    style={
+                      ex.finished ? { textDecoration: "line-through" } : null
+                    }
+                  >
+                    {ex.exerciseName}
+                  </p>
                   <div className='stats'>
                     <p className='sets-number'>
                       {ex.setsNum}x{ex.repsNum}
@@ -314,18 +322,18 @@ function ExercisesForm() {
                   </div>
                 </div>
                 <div className='controls'>
-                    <button
-                        className='edit-btn'
-                        onClick={(e) => editExercise(e, ex.id)}
-                    >
-                        <MdEdit />
-                    </button>
-                    <button
-                        className='delete-btn'
-                        onClick={(e) => deleteExercise(e, ex.id)}
-                    >
-                        <MdDelete />
-                    </button>
+                  <button
+                    className='edit-btn'
+                    onClick={(e) => editExercise(e, ex.id)}
+                  >
+                    <MdEdit />
+                  </button>
+                  <button
+                    className='delete-btn'
+                    onClick={(e) => deleteExercise(e, ex.id)}
+                  >
+                    <MdDelete />
+                  </button>
                 </div>
               </div>
             ))}

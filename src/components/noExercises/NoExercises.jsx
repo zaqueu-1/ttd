@@ -1,20 +1,22 @@
-import React from 'react'
+import React from "react"
+import { useTranslation } from "react-i18next"
 import { MdUploadFile } from "react-icons/md"
-
 function NoExercises({ loadExercises }) {
-  return (
-    <div className='no-exercises animate__animated animate__fadeInUp'>
-        <div className='text-message'>
-            <p>🏋️ você ainda não adicionou um exercício...</p>
-            <br />
-            <p>se já tiver um treino salvo, pode carregar abaixo: </p>
-        </div>
-        <button className='load-btn' onClick={loadExercises}>
-            <MdUploadFile />
-            Carregar
-        </button>
-    </div>
+  const { t } = useTranslation()
 
+  return (
+    <div className='no-exercises'>
+      <div className='text-message'>
+        <p>{t("noExercises.message")}</p>
+        <br />
+        <p>{t("noExercises.submessage")}</p>
+      </div>
+      <div className='save-controls'>
+        <button className='load-btn' onClick={loadExercises}>
+          <MdUploadFile /> {t("actions.load")}
+        </button>
+      </div>
+    </div>
   )
 }
 

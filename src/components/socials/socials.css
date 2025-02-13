@@ -1,70 +1,96 @@
 .footer-container {
-    padding: 1rem 2rem;
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    min-width: 350px;
+  padding: 1rem 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  min-width: 350px;
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(255, 255, 255, 0.4);
-    text-shadow: 1px 1px rgb(111, 111, 111, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255, 0.4);
+  text-shadow: 1px 1px rgb(111, 111, 111, 0.5);
 }
 
 .social {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    color: rgb(255, 255, 255, 0.4);
-    filter: drop-shadow(1px 1px rgb(111, 111, 111, 0.4));
-    width: 50%;
-    gap: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: rgb(255, 255, 255, 0.4);
+  filter: drop-shadow(1px 1px rgb(111, 111, 111, 0.4));
+  width: 50%;
+  gap: 0.5rem;
 }
 
 .title h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgb(255, 255, 255, 0.4);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255, 0.4);
 }
 
 .social-btn {
-    background: transparent;
-    border: none;
-    color: rgb(255, 255, 255, 0.4);
-    cursor: pointer;
-    font-size: 1.6rem;
+  background: transparent;
+  border: none;
+  color: rgb(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.social-btn:hover {
+  color: green;
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.linkedin {
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 580px) {
+  .social-btn {
+    font-size: 1.4rem;
     transition: all 0.4s ease-in-out;
     display: flex;
     margin: 0;
     padding: 0;
+  }
+
+  .linkedin {
+    font-size: 1.6rem;
+  }
 }
 
-.social-btn:hover {
-    color:green;
-    opacity: 0.8;
-    transform: scale(1.05);
+.language-buttons {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
 }
 
-.linkedin {
-    font-size: 2rem;
+.lang-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.6;
 }
 
-@media only screen and (max-width:580px) {    
-    .social-btn {
-        font-size: 1.4rem;
-        transition: all 0.4s ease-in-out;
-        display: flex;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .linkedin {
-        font-size: 1.6rem;
-    }
+.lang-btn:hover {
+  opacity: 1;
+}
+
+.lang-btn.active {
+  opacity: 1;
+  font-weight: bold;
 }

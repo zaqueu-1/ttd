@@ -1,11 +1,14 @@
-import React from 'react'
-import './hero.css'
+import React from "react"
+import { useTranslation } from "react-i18next"
+import "./hero.css"
 
 function Hero() {
+  const { t } = useTranslation()
+
   return (
     <div className='hero-container'>
-        <h1>tá pago!</h1>
-        <p>seu parceiro de treinos</p>
+      <h1>{t("app.title")}</h1>
+      <p>{t("app.subtitle")}</p>
     </div>
   )
 }

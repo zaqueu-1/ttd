@@ -1,6 +1,8 @@
-import ExercisesForm from './components/exercisesForm/ExercisesForm.jsx'
-import Hero from './components/hero/hero.jsx';
-import Socials from './components/socials/socials.jsx';
+import { useEffect } from "react"
+import "./i18n"
+import ExercisesForm from "./components/exercisesForm/ExercisesForm.jsx"
+import Hero from "./components/hero/hero.jsx"
+import Socials from "./components/socials/socials.jsx"
 
 function App() {
   return (
@@ -9,7 +11,7 @@ function App() {
       <Hero />
       <ExercisesForm />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import { toast } from "react-toastify"
+import { useTranslation } from "react-i18next"
 import "./saveModal.css"
 import * as XLSX from "xlsx"
 
 function SaveModal({ isOpen, onClose, exercises }) {
+  const { t } = useTranslation()
   const [listName, setListName] = useState("")
 
   const downloadExercises = () => {
@@ -36,10 +38,10 @@ function SaveModal({ isOpen, onClose, exercises }) {
       XLSX.writeFile(workbook, `${listName}.xlsx`)
 
       setListName("")
-      toast.success("Treino exportado com sucesso!")
+      toast.success(t("modal.export.success"))
       onClose()
     } else if (listName.trim("") === "") {
-      toast.warn("Digite um nome para o treino!")
+      toast.warn(t("modal.export.error"))
     }
   }
 
@@ -48,11 +50,11 @@ function SaveModal({ isOpen, onClose, exercises }) {
   return (
     <div className='modal-overlay'>
       <div className='modal-content animate__animated animate__fadeInUp'>
-        <h2>Exportar Treino</h2>
+        <h2>{t("modal.export.title")}</h2>
         <input
           className='save-input'
           type='text'
-          placeholder='Nome do treino'
+          placeholder={t("modal.export.placeholder")}
           maxLength='20'
           required
           value={listName}
@@ -60,10 +62,10 @@ function SaveModal({ isOpen, onClose, exercises }) {
         />
         <div className='modal-buttons'>
           <button className='export-btn' onClick={downloadExercises}>
-            Exportar
+            {t("actions.export")}
           </button>
           <button className='cancel-btn' onClick={onClose}>
-            Cancelar
+            {t("actions.cancel")}
           </button>
         </div>
       </div>
