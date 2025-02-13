@@ -23,7 +23,8 @@
       "update": "Update",
       "cancel": "Cancel",
       "save": "Save",
-      "export": "Export",
+      "exportExcel": "Export Excel",
+      "exportImage": "Save Image",
       "load": "Load",
       "clear": "Clear"
     },
@@ -32,7 +33,8 @@
         "title": "Export Workout",
         "placeholder": "Workout name",
         "success": "Workout exported successfully!",
-        "error": "Please enter a workout name!"
+        "error": "Please enter a workout name!",
+        "imageError": "Error generating workout image!"
       }
     },
     "messages": {

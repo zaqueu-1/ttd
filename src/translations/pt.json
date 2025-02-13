@@ -23,7 +23,8 @@
       "update": "Atualizar",
       "cancel": "Cancelar",
       "save": "Salvar",
-      "export": "Exportar",
+      "exportExcel": "Exportar Excel",
+      "exportImage": "Salvar Imagem",
       "load": "Carregar",
       "clear": "Limpar"
     },
@@ -32,7 +33,8 @@
         "title": "Exportar Treino",
         "placeholder": "Nome do treino",
         "success": "Treino exportado com sucesso!",
-        "error": "Digite um nome para o treino!"
+        "error": "Digite um nome para o treino!",
+        "imageError": "Erro ao gerar imagem do treino!"
       }
     },
     "messages": {

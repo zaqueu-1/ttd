@@ -3,6 +3,7 @@ import { toast } from "react-toastify"
 import { useTranslation } from "react-i18next"
 import "./saveModal.css"
 import * as XLSX from "xlsx"
+import html2canvas from "html2canvas"
 
 function SaveModal({ isOpen, onClose, exercises }) {
   const { t } = useTranslation()
@@ -45,6 +46,39 @@ function SaveModal({ isOpen, onClose, exercises }) {
     }
   }
 
+  const downloadAsImage = async () => {
+    if (listName.length > 0 && listName.trim("") !== "") {
+      try {
+        const exerciseWrapper = document.querySelector(".exercise-wrapper")
+        if (!exerciseWrapper) return
+
+        // Configurações para melhor qualidade
+        const canvas = await html2canvas(exerciseWrapper, {
+          backgroundColor: "#2c2c2c",
+          scale: 2,
+          logging: false,
+          useCORS: true,
+        })
+
+        // Converter para imagem e fazer download
+        const image = canvas.toDataURL("image/png")
+        const link = document.createElement("a")
+        link.href = image
+        link.download = `${listName}.png`
+        link.click()
+
+        setListName("")
+        toast.success(t("modal.export.success"))
+        onClose()
+      } catch (error) {
+        console.error("Erro ao gerar imagem:", error)
+        toast.error(t("modal.export.imageError"))
+      }
+    } else if (listName.trim("") === "") {
+      toast.warn(t("modal.export.error"))
+    }
+  }
+
   if (!isOpen) return null
 
   return (
@@ -62,7 +96,10 @@ function SaveModal({ isOpen, onClose, exercises }) {
         />
         <div className='modal-buttons'>
           <button className='export-btn' onClick={downloadExercises}>
-            {t("actions.export")}
+            {t("actions.exportExcel")}
+          </button>
+          <button className='export-btn image-btn' onClick={downloadAsImage}>
+            {t("actions.exportImage")}
           </button>
           <button className='cancel-btn' onClick={onClose}>
             {t("actions.cancel")}

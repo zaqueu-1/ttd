@@ -100,7 +100,7 @@
 
 .load-btn {
   background-color: rgb(89, 120, 208);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   border-radius: 4px;
 }
 
@@ -112,28 +112,32 @@
   background-color: #a64848;
 }
 
+.preview-container {
+  width: 100%;
+}
+
 .exercise-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
   max-width: 1200px;
   gap: 0.25rem;
+  padding: .5rem;
 }
 
 .exercise-line {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  margin-left: 0;
   align-items: center;
   border: 2px solid transparent;
   position: relative;
   transition: all 0.3s;
   cursor: pointer;
-  position: relative;
 }
 
 .exercise-line:hover + .save-controls,
@@ -142,7 +146,7 @@
 }
 
 .exercise-line:hover {
-  transform: translateX(-.5rem);
+  transform: translateX(-0.5rem);
 }
 
 .exercise {
@@ -153,6 +157,7 @@
   border-radius: 8px;
   padding: 0.5rem;
   font-size: 1.2rem;
+  width: 100%;
 }
 
 .exercise-line:hover .controls {
@@ -161,10 +166,10 @@
 
 .controls {
   background-color: transparent;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: 0.25rem;
   align-items: center;
   justify-content: center;
   opacity: 0;
@@ -188,7 +193,7 @@
 }
 
 .input-checkbox {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 12px;
@@ -208,12 +213,14 @@
 .stats {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
-.sets-number, .weights-number, .exercise-name {
+.sets-number,
+.weights-number,
+.exercise-name {
   color: rgb(255, 255, 255);
-  padding: .3rem;
+  padding: 0.3rem;
   border: 2px outset rgb(255, 255, 255, 0.15);
   background-color: rgb(255, 255, 255, 0.15);
   transition: all 0.3s;
@@ -283,7 +290,7 @@
 .no-exercises p:last-child {
   font-size: 1rem;
   text-align: center;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   color: rgb(255, 255, 255, 0.5);
 }
 

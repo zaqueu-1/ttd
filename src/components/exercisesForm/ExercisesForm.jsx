@@ -75,7 +75,7 @@ function ExercisesForm() {
     setExercises(newExercises)
     clear()
     setShowEditForm(false)
-    toast.success(t("messages.editionsCompleted"))
+    toast.success(t("messages.exerciseUpdated"))
   }
 
   const clear = () => {
