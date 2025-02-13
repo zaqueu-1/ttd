@@ -79,8 +79,8 @@
 .cancelUpdate-btn,
 .load-btn {
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: .9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,7 +122,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
   gap: 0.25rem;
   padding: .5rem;
 }

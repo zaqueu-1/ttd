@@ -19,7 +19,7 @@ function SaveControls({
 
   return (
     <div className='controls-container'>
-      <button className='options-btn' onClick={toggleMenu}>
+      <button className='options-btn' style={isMenuOpen ? {opacity: "0.5"} : null} onClick={toggleMenu}>
         <FaGear /> {t("actions.options")}
       </button>
       <div className={`save-controls ${isMenuOpen ? "show" : ""}`}>
