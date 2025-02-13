@@ -21,13 +21,29 @@ Check out the live application: [Try on Vercel](https://ttd-kappa.vercel.app/)
 
 ## Installation 💻
 
-1. Clone the repository: \`\`\`bash git clone https://github.com/zaqueu-1/ttd.git \`\`\`
+1. Clone the repository:
 
-2. Navigate to the project directory: \`\`\`bash cd ttd \`\`\`
+```bash
+git clone https://github.com/zaqueu-1/ttd.git
+```
 
-3. Install dependencies: \`\`\`bash npm install \`\`\`
+2. Navigate to the project directory:
 
-4. Start the development server: \`\`\`bash npm start \`\`\`
+```bash
+cd ttd
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Start the development server:
+
+```bash
+npm start
+```
 
 ## Technologies Used 🛠️
 
@@ -43,7 +59,28 @@ Check out the live application: [Try on Vercel](https://ttd-kappa.vercel.app/)
 
 ## Project Structure 📁
 
-\`\`\` src/ ├── components/ │ ├── exercisesForm/ │ │ ├── ExercisesForm.jsx │ │ └── exercisesForm.css │ ├── saveModal/ │ │ ├── SaveModal.jsx │ │ └── saveModal.css │ ├── saveControls/ │ │ ├── SaveControls.jsx │ │ └── saveControls.css │ └── noExercises/ │ ├── NoExercises.jsx │ └── noExercises.css ├── translations/ │ ├── en.json │ └── pt.json ├── i18n.js ├── App.js └── index.js \`\`\`
+```
+src/
+├── components/
+│   ├── exercisesForm/
+│   │   ├── ExercisesForm.jsx
+│   │   └── exercisesForm.css
+│   ├── saveModal/
+│   │   ├── SaveModal.jsx
+│   │   └── saveModal.css
+│   ├── saveControls/
+│   │   ├── SaveControls.jsx
+│   │   └── saveControls.css
+│   └── noExercises/
+│       ├── NoExercises.jsx
+│       └── noExercises.css
+├── translations/
+│   ├── en.json
+│   └── pt.json
+├── i18n.js
+├── App.js
+└── index.js
+```
 
 ## Features in Detail 📝
 
@@ -116,4 +153,4 @@ To add support for a new language:
 
 ## Support 💪
 
-If you like this project, please give it a ⭐️!"
+If you like this project, please give it a ⭐️!
