@@ -9,7 +9,7 @@ A React-based workout planning application that helps you organize and track you
 - **Exercise Management**: Add, edit, and delete exercises
 - **Workout Details**: Track sets, reps, and weights for each exercise
 - **Progress Tracking**: Mark exercises as completed
-- **Data Export**: Export your workouts to Excel files
+- **Data Export**: Export your workouts to Excel files or as images
 - **Data Import**: Load previously saved workout routines
 - **Local Storage**: Your data persists between sessions
 - **Responsive Design**: Works on both desktop and mobile devices
@@ -53,6 +53,7 @@ npm start
 - React Icons
 - React Toastify
 - XLSX (for Excel file handling)
+- html2canvas (for image export)
 - Animate.css
 - LocalStorage API
 - React-i18next (for internationalization)
@@ -94,8 +95,18 @@ src/
 ### Data Persistence
 
 - All data is automatically saved to localStorage
-- Export workouts to Excel files
+- Export workouts to Excel files for spreadsheet compatibility
+- Export workouts as high-quality PNG images for easy sharing
 - Import previously saved workout files
+
+### Export Options
+
+- **Excel Export**: Generate a structured Excel file with exercise details
+- **Image Export**: Create a high-quality PNG image of your workout list
+  - Clean, visually appealing format
+  - Perfect for sharing on social media or messaging apps
+  - Maintains the app's visual style
+  - 2x scale for crisp display on all devices
 
 ### User Interface
 
