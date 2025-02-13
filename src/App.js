@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import "./i18n"
 import ExercisesForm from "./components/exercisesForm/ExercisesForm.jsx"
 import Hero from "./components/hero/hero.jsx"
