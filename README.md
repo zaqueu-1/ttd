@@ -18,7 +18,7 @@ A React-based workout planning application that helps you organize and track you
 
 ## Live Demo 🌐
 
-Check out the live application: [Try on Vercel](https://ttd-kappa.vercel.app/)
+Check out the live application: [Try on Vercel](https://tapago-fit.vercel.app/)
 
 ## Installation 💻
 
