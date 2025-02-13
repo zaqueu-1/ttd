@@ -1,19 +1,105 @@
+# tá pago - your workout buddy 🏋️‍♂️
 
-![React](https://camo.githubusercontent.com/ab4c3c731a174a63df861f7b118d6c8a6c52040a021a552628db877bd518fe84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d2532333230323332612e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d253233363144414642)
+A React-based workout planning application that helps you organize and track your exercises. Create, edit, and manage your workout routines with an intuitive interface.
 
-## TTD | Treino Todo Dia!
-Exercise planning app with JSON download/upload feature. 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-## Demo
-![demo](https://github.com/zaqueu-1/ttd/blob/main/chrome-capture-2023-1-1.gif)
+## Features 🚀
 
-## Deploy
-https://ttd-zaqueu-1.vercel.app/
+- **Exercise Management**: Add, edit, and delete exercises
+- **Workout Details**: Track sets, reps, and weights for each exercise
+- **Progress Tracking**: Mark exercises as completed
+- **Data Export**: Export your workouts to Excel files
+- **Data Import**: Load previously saved workout routines
+- **Local Storage**: Your data persists between sessions
+- **Responsive Design**: Works on both desktop and mobile devices
 
+## Live Demo 🌐
 
-## Roadmap
-- responsive mode for mobiles [working on it];
+Check out the live application: [Try on Vercel](https://ttd-kappa.vercel.app/)
 
-## Author
-- [@zaqueu-1](https://www.github.com/zaqueu-1)
+## Installation 💻
 
+1. Clone the repository:
+\`\`\`bash
+git clone https://github.com/zaqueu-1/ttd.git
+\`\`\`
+
+2. Navigate to the project directory:
+\`\`\`bash
+cd ttd
+\`\`\`
+
+3. Install dependencies:
+\`\`\`bash
+npm install
+\`\`\`
+
+4. Start the development server:
+\`\`\`bash
+npm start
+\`\`\`
+
+## Technologies Used 🛠️
+
+- React.js
+- JavaScript (ES6+)
+- CSS3
+- React Icons
+- React Toastify
+- XLSX (for Excel file handling)
+- Animate.css
+- LocalStorage API
+
+## Project Structure 📁
+
+\`\`\`
+src/
+├── components/
+│   ├── exercisesForm/
+│   │   ├── ExercisesForm.jsx
+│   │   └── exercisesForm.css
+│   ├── saveModal/
+│   │   ├── SaveModal.jsx
+│   │   └── saveModal.css
+│   ├── saveControls/
+│   │   ├── SaveControls.jsx
+│   │   └── saveControls.css
+│   └── noExercises/
+│       ├── NoExercises.jsx
+│       └── noExercises.css
+├── App.js
+└── index.js
+\`\`\`
+
+## Features in Detail 📝
+
+### Exercise Management
+- Create new exercises with name, sets, reps, and weight
+- Edit existing exercises
+- Delete exercises
+- Mark exercises as completed
+
+### Data Persistence
+- All data is automatically saved to localStorage
+- Export workouts to Excel files
+- Import previously saved workout files
+
+### User Interface
+- Clean and intuitive design
+- Responsive layout for all screen sizes
+- Smooth animations and transitions
+- Interactive hover effects
+- Toast notifications for user feedback
+
+## Upcoming Features 🔜
+
+- [ ] User authentication
+- [ ] Cloud data synchronization
+- [ ] Workout history tracking
+- [ ] Exercise categories
+- [ ] Progress charts
+
+## Support 💪
+
+If you like this project, please give it a ⭐️!" 
