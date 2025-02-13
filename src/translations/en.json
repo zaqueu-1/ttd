@@ -25,8 +25,10 @@
       "save": "Save",
       "exportExcel": "Export Excel",
       "exportImage": "Save Image",
+      "share": "Share",
       "load": "Load",
-      "clear": "Clear"
+      "clear": "Clear",
+      "options": "Options"
     },
     "modal": {
       "export": {
@@ -44,7 +46,10 @@
       "exerciseUpdated": "Updates completed!",
       "listCleared": "Exercise list cleared!",
       "workoutLoaded": "Workout loaded successfully!",
-      "loadError": "Error loading file. Make sure it's a valid Excel file."
+      "loadError": "Error loading file. Make sure it's a valid Excel file.",
+      "shareLoadError": "Error loading shared workout. Invalid or corrupted link.",
+      "urlCopied": "Share link copied to clipboard!",
+      "shareError": "Error generating share link."
     },
     "noExercises": {
       "message": "🏋️ You haven't added any exercises yet...",

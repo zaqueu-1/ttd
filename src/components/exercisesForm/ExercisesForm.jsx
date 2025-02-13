@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 import { useTranslation } from "react-i18next"
 import React from "react"
@@ -27,6 +27,42 @@ function ExercisesForm() {
     const storedExercises = localStorage.getItem("exercises")
     return storedExercises ? JSON.parse(storedExercises) : []
   })
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const sharedWorkout = urlParams.get("workout")
+
+    if (sharedWorkout) {
+      try {
+        const decodedWorkout = JSON.parse(atob(sharedWorkout))
+        setExercises(decodedWorkout)
+        localStorage.setItem("exercises", JSON.stringify(decodedWorkout))
+        toast.success(t("messages.workoutLoaded"))
+
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname,
+        )
+      } catch (error) {
+        console.error("Erro ao carregar treino da URL:", error)
+        toast.error(t("messages.shareLoadError"))
+      }
+    }
+  }, [t])
+
+  const generateShareableUrl = () => {
+    try {
+      const workoutData = btoa(JSON.stringify(exercises))
+      const shareableUrl = `${window.location.origin}${window.location.pathname}?workout=${workoutData}`
+
+      navigator.clipboard.writeText(shareableUrl)
+      toast.success(t("messages.urlCopied"))
+    } catch (error) {
+      console.error("Erro ao gerar URL:", error)
+      toast.error(t("messages.shareError"))
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -344,6 +380,7 @@ function ExercisesForm() {
             loadExercises={loadExercises}
             clearList={clearList}
             setIsSaveModalOpen={setIsSaveModalOpen}
+            generateShareableUrl={generateShareableUrl}
           />
         )}
 

@@ -25,8 +25,10 @@
       "save": "Salvar",
       "exportExcel": "Exportar Excel",
       "exportImage": "Salvar Imagem",
+      "share": "Compartilhar",
       "load": "Carregar",
-      "clear": "Limpar"
+      "clear": "Limpar",
+      "options": "Opções"
     },
     "modal": {
       "export": {
@@ -44,7 +46,10 @@
       "exerciseUpdated": "Edições concluídas!",
       "listCleared": "Lista de exercícios apagada!",
       "workoutLoaded": "Treino carregado com sucesso!",
-      "loadError": "Erro ao carregar o arquivo. Certifique-se de que é um arquivo Excel válido."
+      "loadError": "Erro ao carregar o arquivo. Certifique-se de que é um arquivo Excel válido.",
+      "shareLoadError": "Erro ao carregar treino compartilhado. Link inválido ou corrompido.",
+      "urlCopied": "Link de compartilhamento copiado para a área de transferência!",
+      "shareError": "Erro ao gerar link de compartilhamento."
     },
     "noExercises": {
       "message": "🏋️ Você ainda não adicionou um exercício...",
