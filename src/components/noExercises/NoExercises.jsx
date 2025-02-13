@@ -5,9 +5,9 @@ function NoExercises({ loadExercises }) {
   return (
     <div className='no-exercises animate__animated animate__fadeInUp'>
         <div className='text-message'>
-            <p>🏋️ Parece que você ainda não adicionou um exercício...</p>
+            <p>🏋️ você ainda não adicionou um exercício...</p>
             <br />
-            <p>Se já tiver um treino salvo, pode carregá-lo abaixo: </p>
+            <p>se já tiver um treino salvo, pode carregar abaixo: </p>
         </div>
         <button className='load-btn' onClick={loadExercises}>
             <MdUploadFile />
