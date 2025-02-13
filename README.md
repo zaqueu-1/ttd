@@ -11,6 +11,7 @@ A React-based workout planning application that helps you organize and track you
 - **Progress Tracking**: Mark exercises as completed
 - **Data Export**: Export your workouts to Excel files or as images
 - **Data Import**: Load previously saved workout routines
+- **Quick Access**: Save and manage your favorite workouts
 - **Workout Sharing**: Share workouts via URL
 - **Local Storage**: Your data persists between sessions
 - **Responsive Design**: Works on both desktop and mobile devices
@@ -98,6 +99,12 @@ src/
 - All data is automatically saved to localStorage
 - Export workouts to Excel files for spreadsheet compatibility
 - Export workouts as high-quality PNG images for easy sharing
+- Quick Access system for favorite workouts
+  - Save workouts with custom names
+  - Access saved workouts with one click
+  - Update existing workouts
+  - Delete saved workouts
+  - Instant loading of saved routines
 - Share workouts directly via URL
   - Generate shareable links with encoded workout data
   - Recipients can load workouts instantly by opening the link
@@ -113,6 +120,11 @@ src/
   - Perfect for sharing on social media or messaging apps
   - Maintains the app's visual style
   - 2x scale for crisp display on all devices
+- **Quick Access**: Save workouts for easy access
+  - Dedicated "My Workouts" section
+  - Simple save and load functionality
+  - Manage multiple workout routines
+  - Quick switching between different workouts
 - **URL Sharing**: Share workouts via direct links
   - One-click link generation
   - Automatic clipboard copy
