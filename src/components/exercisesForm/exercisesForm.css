@@ -1,0 +1,292 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sets-reps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.exercise-input,
+.sets-input,
+.reps-input {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  font-size: 1rem;
+  padding: 1rem;
+  height: 20px;
+  transition: all 0.3s;
+  color: #585858;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.exercise-input:focus,
+.sets-input:focus,
+.reps-input:focus {
+  outline: none;
+  border: 3px solid #48a648;
+}
+
+.exercise-input {
+  width: 100%;
+  max-width: 600px;
+}
+
+.sets-input,
+.reps-input {
+  width: 100%;
+  max-width: 180px;
+}
+
+.submit-btn {
+  background: transparent;
+  border: none;
+  font-size: 2.2rem;
+  display: flex;
+  color: rgb(72, 166, 72);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  color: rgb(58, 134, 58);
+}
+
+.update-btn,
+.cancelUpdate-btn,
+.load-btn {
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.update-btn:hover,
+.cancelUpdate-btn:hover,
+.load-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.update-btn {
+  background-color: rgb(89, 120, 208);
+}
+
+.cancelUpdate-btn {
+  background-color: #a64848;
+}
+
+.exercise-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.exercise-line {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+  border: 2px solid transparent;
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.exercise-line:hover + .save-controls,
+.save-controls:hover {
+  opacity: 1;
+}
+
+.exercise-line:hover {
+  transform: translateX(-.5rem);
+}
+
+.exercise {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(58, 134, 58);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.exercise-line:hover .controls {
+  opacity: 1;
+}
+
+.controls {
+  background-color: transparent;
+  padding: 0 .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.edit-btn,
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.input-checkbox {
+  margin: 0 .5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid white;
+}
+
+.finished {
+  background-color: rgb(93, 99, 93);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.sets-number, .weights-number, .exercise-name {
+  color: rgb(255, 255, 255);
+  padding: .3rem;
+  border: 2px outset rgb(255, 255, 255, 0.15);
+  background-color: rgb(255, 255, 255, 0.15);
+  transition: all 0.3s;
+}
+
+.exercise-name {
+  border: none;
+  background-color: transparent;
+}
+
+.weights-number {
+  color: white;
+  margin-right: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 2px dashed rgb(255, 255, 255, 0.3);
+  background-color: rgba(74, 74, 74, 0.5);
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.save-input {
+  border-radius: 8px;
+  outline: none;
+  border: 4px solid transparent;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  transition: all 0.3s;
+  color: #797979;
+}
+
+.save-input:focus {
+  border-radius: 8px;
+  border: 4px solid rgb(112, 112, 112);
+}
+
+.no-exercises {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: whitesmoke;
+}
+
+.no-exercises p {
+  font-size: 1.2rem;
+  margin-bottom: -1rem;
+}
+
+.no-exercises p:last-child {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+@media screen and (max-width: 450px) {
+  .exercise {
+    font-size: 1rem;
+  }
+
+  .exercise-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

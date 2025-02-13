@@ -1,0 +1,21 @@
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 150px;
+}
+
+.hero-container h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(58, 134, 58);
+    text-shadow: 1px 1px rgb(111, 111, 111, 0.5);
+}
+
+.hero-container p {
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255, 0.4);
+    text-shadow: 1px 1px rgb(111, 111, 111, 0.5);
+}

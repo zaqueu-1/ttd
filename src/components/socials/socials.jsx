@@ -1,10 +1,10 @@
 import React from 'react'
-import './footer.css'
+import './socials.css'
 import { VscGithub } from 'react-icons/vsc'
 import { BsInstagram } from 'react-icons/bs'
 import { AiOutlineLinkedin } from 'react-icons/ai'
 
-function Footer() {
+function Socials() {
 
   const takeMeTo = (link) => {
     if (link === 'github') {
@@ -21,7 +21,7 @@ function Footer() {
     <div style={{display: 'flex', justifyContent: 'center'}}>
         <div className='footer-container'>
             <div className='title'>
-                <h1>TTD |</h1><h4>Treino Todo Dia</h4>
+                <h2>tá pago!</h2>
             </div>
 
             <div className='social'>
@@ -34,4 +34,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export default Socials

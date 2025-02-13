@@ -1,14 +1,14 @@
-import Builder from './components/builder/Builder.jsx'
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
+import ExercisesForm from './components/exercisesForm/ExercisesForm.jsx'
+import Hero from './components/hero/hero.jsx';
+import Socials from './components/socials/socials.jsx';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Builder />
-      <Footer />
-    </>
+    <div className='app-container'>
+      <Socials />
+      <Hero />
+      <ExercisesForm />
+    </div>
   );
 }
 
