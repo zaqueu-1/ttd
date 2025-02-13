@@ -28,7 +28,9 @@
       "share": "Compartilhar",
       "load": "Carregar",
       "clear": "Limpar",
-      "options": "Opções"
+      "options": "Opções",
+      "quickSave": "Salvar como Acesso Rápido",
+      "myWorkouts": "Meus Treinos"
     },
     "modal": {
       "export": {
@@ -37,7 +39,15 @@
         "success": "Treino exportado com sucesso!",
         "error": "Digite um nome para o treino!",
         "imageError": "Erro ao gerar imagem do treino!"
+      },
+      "quickAccess": {
+        "saved": "Treino salvo no acesso rápido!",
+        "updated": "Treino atualizado no acesso rápido!"
       }
+    },
+    "quickAccess": {
+      "title": "Treinos Salvos",
+      "empty": "Você ainda não tem treinos..."
     },
     "messages": {
       "fillFields": "Preencha todos os campos!",
@@ -46,6 +56,7 @@
       "exerciseUpdated": "Edições concluídas!",
       "listCleared": "Lista de exercícios apagada!",
       "workoutLoaded": "Treino carregado com sucesso!",
+      "workoutDeleted": "Treino removido dos favoritos!",
       "loadError": "Erro ao carregar o arquivo. Certifique-se de que é um arquivo Excel válido.",
       "shareLoadError": "Erro ao carregar treino compartilhado. Link inválido ou corrompido.",
       "urlCopied": "Link de compartilhamento copiado para a área de transferência!",

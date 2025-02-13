@@ -28,7 +28,9 @@
       "share": "Share",
       "load": "Load",
       "clear": "Clear",
-      "options": "Options"
+      "options": "Options",
+      "quickSave": "Save as Quick Access",
+      "myWorkouts": "My Workouts"
     },
     "modal": {
       "export": {
@@ -37,7 +39,15 @@
         "success": "Workout exported successfully!",
         "error": "Please enter a workout name!",
         "imageError": "Error generating workout image!"
+      },
+      "quickAccess": {
+        "saved": "Workout saved to quick access!",
+        "updated": "Workout updated in quick access!"
       }
+    },
+    "quickAccess": {
+      "title": "Saved Workouts",
+      "empty": "You don't have any workouts..."
     },
     "messages": {
       "fillFields": "Please fill all fields!",
@@ -46,6 +56,7 @@
       "exerciseUpdated": "Updates completed!",
       "listCleared": "Exercise list cleared!",
       "workoutLoaded": "Workout loaded successfully!",
+      "workoutDeleted": "Workout removed from favorites!",
       "loadError": "Error loading file. Make sure it's a valid Excel file.",
       "shareLoadError": "Error loading shared workout. Invalid or corrupted link.",
       "urlCopied": "Share link copied to clipboard!",

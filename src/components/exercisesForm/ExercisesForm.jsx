@@ -381,6 +381,7 @@ function ExercisesForm() {
             clearList={clearList}
             setIsSaveModalOpen={setIsSaveModalOpen}
             generateShareableUrl={generateShareableUrl}
+            setExercises={setExercises}
           />
         )}
 

@@ -5,10 +5,15 @@
   gap: 0.25rem;
   position: relative;
   width: 100%;
-
 }
 
-.options-btn {
+.controls-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.options-btn,
+.workouts-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -37,10 +42,18 @@
   transition: all 0.3s ease;
   position: absolute;
   top: 100%;
-  right: 50%;
   padding: 0.5rem;
   border-radius: 8px;
-  transform: translate(50%, 10px);
+}
+
+.options-menu {
+  right: 50%;
+  transform: translate(25%, 10px);
+}
+
+.workouts-menu {
+  right: 50%;
+  transform: translate(75%, 10px);
 }
 
 .save-controls.show {
@@ -49,7 +62,72 @@
   transform: translate(50%, 0);
 }
 
-.save-controls button {
+.options-menu.show {
+  transform: translate(25%, 0);
+}
+
+.workouts-menu.show {
+  transform: translate(75%, 0);
+}
+
+.saved-workouts {
+  width: 100%;
+}
+
+.saved-workouts h3 {
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.saved-workout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 80%;
+}
+
+.saved-workout-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.saved-workout-item span {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.delete-saved-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.delete-saved-btn:hover {
+  color: #f44336;
+}
+
+.no-workouts {
+  padding: 0 .5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.options-menu button {
   background-color: rgba(0, 0, 0, 0.15);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -65,21 +143,21 @@
   transition: all 0.3s;
   cursor: pointer;
   font-weight: 400;
-  width: 100%;
+  width: 80%;
 }
 
-.save-controls button:nth-child(1):hover {
+.options-menu button:nth-child(1):hover {
   color: rgb(72, 166, 72);
 }
 
-.save-controls button:nth-child(2):hover {
+.options-menu button:nth-child(2):hover {
   color: rgb(89, 120, 208);
 }
 
-.save-controls button:nth-child(3):hover {
+.options-menu button:nth-child(3):hover {
   color: rgb(255, 193, 7);
 }
 
-.save-controls button:nth-child(4):hover {
+.options-menu button:nth-child(4):hover {
   color: rgb(231, 81, 81);
 }

@@ -9,9 +9,41 @@ function SaveModal({ isOpen, onClose, exercises }) {
   const { t } = useTranslation()
   const [listName, setListName] = useState("")
 
+  const saveQuickAccess = () => {
+    if (listName.length > 0 && listName.trim("") !== "") {
+      const savedWorkouts = JSON.parse(
+        localStorage.getItem("savedWorkouts") || "[]",
+      )
+
+      // Verificar se já existe um treino com esse nome
+      const existingIndex = savedWorkouts.findIndex((w) => w.name === listName)
+
+      const workoutData = {
+        name: listName,
+        exercises: exercises,
+        timestamp: new Date().toISOString(),
+      }
+
+      if (existingIndex !== -1) {
+        // Atualizar treino existente
+        savedWorkouts[existingIndex] = workoutData
+        toast.success(t("modal.quickAccess.updated"))
+      } else {
+        // Adicionar novo treino
+        savedWorkouts.push(workoutData)
+        toast.success(t("modal.quickAccess.saved"))
+      }
+
+      localStorage.setItem("savedWorkouts", JSON.stringify(savedWorkouts))
+      setListName("")
+      onClose()
+    } else if (listName.trim("") === "") {
+      toast.warn(t("modal.export.error"))
+    }
+  }
+
   const downloadExercises = () => {
     if (listName.length > 0 && listName.trim("") !== "") {
-      // Preparar os dados para o Excel
       const workbookData = exercises.map((exercise) => ({
         "Exercício": exercise.exerciseName,
         "Séries": exercise.setsNum,
@@ -95,6 +127,9 @@ function SaveModal({ isOpen, onClose, exercises }) {
           onChange={(e) => setListName(e.target.value)}
         />
         <div className='modal-buttons'>
+          <button className='quick-access-btn' onClick={saveQuickAccess}>
+            {t("actions.quickSave")}
+          </button>
           <button className='export-btn' onClick={downloadExercises}>
             {t("actions.exportExcel")}
           </button>
